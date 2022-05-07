@@ -23,23 +23,36 @@ Command required to start the server: Type 'python manage.py runserver' on cmd
 9)It can find shortest path using A start search. 
 10)It can draw various figures.
 
-**Key Learnings
-**
+**Key Learnings**
+
 Speech recognition(speech to text).
+
 Implementation of A star search.
+
 Text to speech(Pyttsx3).
+
 Integration of voice command and turtle sim to draw various shapes.
+
 Showing the output of A star search on webpage using Django.
+
 Demonstration of Resolution theorem.
+
 Opening any directory or applications using OS module.
+
 Fetching data from Wikipedia.
+
 Sending emails using voice commands with the smtplib module.
+
 
 **Future Work**
 Project can be implemented for multiple languages like Hindi.
+
 We can control smart home devices using voice commands.
+
 Voice commands can be used to play games.
+
 Voice commands can also be used to check traffic on road.
+
 Voice of a individual can be used to detect the mood of a person
 
 
