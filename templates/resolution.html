@@ -1,0 +1,346 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Resolution Algorithm</title>
+    <link rel="stylesheet" href="{% static 'css/resocss.css' %}">
+    <script src="{% static 'javascript/reso.js' %}"></script>
+</head>
+
+
+
+
+<body>
+
+    <div id="d1">
+        <h1 id="h1">Resolution Algorithm</h1>
+    </div>
+
+
+    <div id="maindiv">
+        <div id="d2" class="text" style="display:block;">
+            <strong><h2 class="h2">Resolution</h2></strong>
+            <p>Resolution is a theorem proving technique that proceeds by building refutation proofs, i.e., proofs by
+                contradictions. It was invented by a Mathematician John Alan Robinson in the year 1965.</p>
+            <p>Resolution is used, if there are various statements are given, and we need to prove a conclusion of those
+                statements. Unification is a key concept in proofs by resolutions. Resolution is a single inference rule
+                which can efficiently operate on the <strong>conjunctive normal form or clausal form</strong>.</p>
+            <p><strong>Clause</strong>: Disjunction of literals (an atomic sentence) is called a
+                <strong>clause</strong>. It is also known as a unit clause.
+            </p>
+            <p><strong>Conjunctive Normal Form</strong>: A sentence represented as a conjunction of clauses is said to
+                be <strong>conjunctive normal form</strong> or <strong>CNF</strong>.</p>
+
+
+
+
+            <!-- <pre class="para"><strong><u>Resolution</strong></u> :-</strong> Resolution is a theorem proving technique that proceeds by building refutation proofs, 
+            i.e., proofs by contradictions. It was invented by a Mathematician John Alan Robinson in the year 1965.
+
+Resolution is used, if there are various statements are given, and we need to prove a conclusion of 
+those statements. Unification is a key concept in proofs by resolutions. Resolution is a single 
+inference rule which can efficiently operate on the conjunctive normal form or clausal form.
+
+Clause: Disjunction of literals (an atomic sentence) is called a clause. It is also known as a unit clause.
+
+Conjunctive Normal Form: A sentence represented as a conjunction of clauses is said to be conjunctive normal form or CNF.
+            </pre> -->
+
+
+            <!-- <button id="b11" onclick="my_function1()">Click</button> -->
+            <label class="switch">
+                <input id="b1" onclick="my_function1()" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div id="d3" class="text">
+            <h2 class="h2">Steps for Resolution:</h2>
+            <ol class="points">
+                <li>Conversion of facts into first-order logic.</li>
+                <li>Convert FOL statements into CNF</li>
+                <li>Negate the statement which needs to prove (proof by contradiction)</li>
+                <li>Draw resolution graph (unification). </li>
+            </ol>
+            <p>To better understand all the above steps, we will take an example in which we will apply resolution.</p>
+            <h3 class="h3">Example:</h3>
+            <ol class="pointsa">
+                <li><strong>John likes all kind of food.</strong></li>
+                <li><strong>Apple and vegetable are food</strong></li>
+                <li><strong>Anything anyone eats and not killed is food.</strong></li>
+                <li><strong>Anil eats peanuts and still alive</strong></li>
+                <li><strong>Harry eats everything that Anil eats.</strong><br>
+                    <strong>Prove by resolution that:</strong>
+                </li>
+                <li><strong>John likes peanuts.</strong> </li>
+            </ol>
+
+
+
+
+            <!-- <pre class="para">
+        Steps for Resolution:
+
+        1. Conversion of facts into first-order logic.
+        2. Convert FOL statements into CNF
+        3. Negate the statement which needs to prove (proof by contradiction)
+        4. Draw resolution graph (unification).
+      
+      To better understand all the above steps, we will take an example in which we will apply resolution.
+      
+      Example:
+      
+        a. John likes all kind of food.
+        b. Apple and vegetable are food
+        c. Anything anyone eats and not killed is food.
+        d. Anil eats peanuts and still alive
+        e. Harry eats everything that Anil eats.
+      
+      Prove by resolution that:
+      
+        John likes peanuts.
+      </pre> -->
+            <!-- <button onclick="my_function2()">Click</button> -->
+            <label class="switch">
+                <input id="b2" onclick="my_function2()" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div id="d4" class="text">
+            <p class="pq"><strong>Step-1: Conversion of Facts into FOL</strong></p>
+            <p>In the first step we will convert all the given statements into its first order logic. </p>
+            <center>
+            <img style="text-align: center; margin: 10px; width: 500px;" src="https://static.javatpoint.com/tutorial/ai/images/ai-resolution-in-first-order-logic2.png"
+                alt="Resolution in FOL" />
+                </center>
+            <p class="pq"><strong>Step-2: Conversion of FOL into CNF</strong></p>
+            <p>In First order logic resolution, it is required to convert the FOL into CNF as CNF form makes easier for
+                resolution proofs. </p>
+            <ul class="points">
+                <li><strong>Eliminate all implication (&rarr;) and rewrite</strong>
+                    <ol class="pointsa">
+                        <li>&forall;x &not; food(x) V likes(John, x)</li>
+                        <li>food(Apple) &Lambda; food(vegetables)</li>
+                        <li>&forall;x &forall;y &not; [eats(x, y) &Lambda; &not; killed(x)] V food(y)</li>
+                        <li>eats (Anil, Peanuts) &Lambda; alive(Anil)</li>
+                        <li>&forall;x &not; eats(Anil, x) V eats(Harry, x)</li>
+                        <li>&forall;x&not; [&not; killed(x) ] V alive(x)</li>
+                        <li>&forall;x &not; alive(x) V &not; killed(x)</li>
+                        <li>likes(John, Peanuts). </li>
+                    </ol>
+                </li>
+                <li><strong>Move negation (&not;)inwards and rewrite </strong>
+                    <ol class="pointsa">
+                        <li>&forall;x &not; food(x) V likes(John, x)</li>
+                        <li>food(Apple) &Lambda; food(vegetables)</li>
+                        <li>&forall;x &forall;y &not; eats(x, y) V killed(x) V food(y)</li>
+                        <li>eats (Anil, Peanuts) &Lambda; alive(Anil)</li>
+                        <li>&forall;x &not; eats(Anil, x) V eats(Harry, x)</li>
+                        <li>&forall;x &not;killed(x) ] V alive(x)</li>
+                        <li>&forall;x &not; alive(x) V &not; killed(x)</li>
+                        <li>likes(John, Peanuts). </li>
+                    </ol>
+                </li>
+                <li><strong>Rename variables or standardize variables </strong>
+                    <ol class="pointsa">
+                        <li>&forall;x &not; food(x) V likes(John, x)</li>
+                        <li>food(Apple) &Lambda; food(vegetables)</li>
+                        <li>&forall;y &forall;z &not; eats(y, z) V killed(y) V food(z)</li>
+                        <li>eats (Anil, Peanuts) &Lambda; alive(Anil)</li>
+                        <li>&forall;w&not; eats(Anil, w) V eats(Harry, w)</li>
+                        <li>&forall;g &not;killed(g) ] V alive(g)</li>
+                        <li>&forall;k &not; alive(k) V &not; killed(k)</li>
+                        <li>likes(John, Peanuts). </li>
+                    </ol>
+                </li>
+
+
+
+
+
+                <!-- <pre class="para">
+        Step-1: Conversion of Facts into FOL
+
+        In the first step we will convert all the given statements into its first order logic.
+        
+        
+        Step-2: Conversion of FOL into CNF
+        
+        In First order logic resolution, it is required to convert the FOL into CNF as CNF form makes easier for resolution proofs.
+        
+          i) Eliminate all implication (→) and rewrite
+        
+             a. ∀x ¬ food(x) V likes(John, x)
+             b. food(Apple) Λ food(vegetables)
+             c. ∀x ∀y ¬ [eats(x, y) Λ ¬ killed(x)] V food(y)
+             d. eats (Anil, Peanuts) Λ alive(Anil)
+             e. ∀x ¬ eats(Anil, x) V eats(Harry, x)
+             f. ∀x¬ [¬ killed(x) ] V alive(x)
+             g. ∀x ¬ alive(x) V ¬ killed(x)
+             h. likes(John, Peanuts).
+        
+          ii) Move negation (¬)inwards and rewrite
+        
+             a. ∀x ¬ food(x) V likes(John, x)
+             b. food(Apple) Λ food(vegetables)
+             c. ∀x ∀y ¬ eats(x, y) V killed(x) V food(y)
+             d. eats (Anil, Peanuts) Λ alive(Anil)
+             e. ∀x ¬ eats(Anil, x) V eats(Harry, x)
+             f. ∀x ¬killed(x) ] V alive(x)
+             g. ∀x ¬ alive(x) V ¬ killed(x)
+             h. likes(John, Peanuts).
+        
+          iii) Rename variables or standardize variables
+        
+             a. ∀x ¬ food(x) V likes(John, x)
+             b. food(Apple) Λ food(vegetables)
+             c. ∀y ∀z ¬ eats(y, z) V killed(y) V food(z)
+             d. eats (Anil, Peanuts) Λ alive(Anil)
+             e. ∀w¬ eats(Anil, w) V eats(Harry, w)
+             f. ∀g ¬killed(g) ] V alive(g)
+             g. ∀k ¬ alive(k) V ¬ killed(k)
+             h. likes(John, Peanuts).
+      </pre> -->
+                <!-- <button onclick="my_function3()">Click</button> -->
+                <label class="switch">
+                    <input id="b3" onclick="my_function3()" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+        </div>
+        <div id="d5" class="text">
+            <li><strong>Eliminate existential instantiation quantifier by elimination. </strong><br>
+                In this step, we will eliminate existential quantifier &exist;, and this process is known as
+                <strong>Skolemization</strong>. But in this example problem since there is no existential quantifier so
+                all the statements will remain same in this step.
+            </li>
+            <li><strong>Drop Universal quantifiers.</strong><br>
+                In this step we will drop all universal quantifier since all the statements are not implicitly
+                quantified so we don't need it.
+                <ol class="pointsa">
+                    <li>&not; food(x) V likes(John, x)</li>
+                    <li>food(Apple)</li>
+                    <li>food(vegetables)</li>
+                    <li>&not; eats(y, z) V killed(y) V food(z)</li>
+                    <li>eats (Anil, Peanuts) </li>
+                    <li>alive(Anil)</li>
+                    <li>&not; eats(Anil, w) V eats(Harry, w)</li>
+                    <li>killed(g) V alive(g)</li>
+                    <li>&not; alive(k) V &not; killed(k)</li>
+                    <li>likes(John, Peanuts).</li>
+                </ol>
+            </li>
+            </ul>
+            <h4 class="n">Note: Statements "food(Apple) &Lambda; food(vegetables)" and "eats (Anil, Peanuts) &Lambda;
+                alive(Anil)" can be written in two separate statements.</h4>
+            <ul class="points">
+                <li><strong>Distribute conjunction &and; over disjunction &not;.</strong><br>
+                    This step will not make any change in this problem. </li>
+            </ul>
+            <p class="pq"><strong>Step-3: Negate the statement to be proved </strong></p>
+            <p>In this statement, we will apply negation to the conclusion statements, which will be written as
+                &not;likes(John, Peanuts)</p>
+            <p class="pq"><strong>Step-4: Draw Resolution graph:</strong></p>
+            <p>Now in this step, we will solve the problem by resolution tree using substitution. For the above problem,
+                it will be given as follows: </p>
+                <center>
+            <img style="text-align: center; margin: 10px; width: 500px;" src="https://static.javatpoint.com/tutorial/ai/images/ai-resolution-in-first-order-logic3.png"
+                alt="Resolution in FOL" />
+                </center>>
+            <p>Hence the negation of the conclusion has been proved as a complete contradiction with the given set of
+                statements. </p>
+            <h2 class="h2">Explanation of Resolution graph:</h2>
+            <ul class="points">
+                <li>In the first step of resolution graph, <strong>&not;likes(John, Peanuts) </strong>, and
+                    <strong>likes(John, x) </strong> get resolved(canceled) by substitution of
+                    <strong>{Peanuts/x}</strong>, and we are left with <strong>&not; food(Peanuts) </strong>
+                </li>
+                <li>In the second step of the resolution graph, <strong>&not; food(Peanuts) </strong>, and
+                    <strong>food(z) </strong> get resolved (canceled) by substitution of <strong>{ Peanuts/z}</strong>,
+                    and we are left with <strong>&not; eats(y, Peanuts) V killed(y) </strong>.
+                </li>
+                <li>In the third step of the resolution graph, <strong>&not; eats(y, Peanuts) </strong> and <strong>eats
+                        (Anil, Peanuts) </strong> get resolved by substitution <strong>{Anil/y}</strong>, and we are
+                    left with <strong>Killed(Anil) </strong>.</li>
+                <li>In the fourth step of the resolution graph, <strong>Killed(Anil) </strong> and <strong>&not;
+                        killed(k) </strong> get resolve by substitution <strong>{Anil/k}</strong>, and we are left with
+                    <strong>&not; alive(Anil) </strong>.
+                </li>
+                <li>In the last step of the resolution graph <strong>&not; alive(Anil) </strong> and <strong>alive(Anil)
+                    </strong> get resolved.</li>
+            </ul>
+
+
+
+            <!-- <pre class="para">
+        iv) Eliminate existential instantiation quantifier by elimination.
+
+        In this step, we will eliminate existential quantifier ∃, and this process is known as Skolemization. But in this example problem 
+        since there is no existential quantifier so all the statements will remain same in this step.
+        Drop Universal quantifiers.
+        
+          v) In this step we will drop all universal quantifier since all the statements are not implicitly quantified so we don't need it.
+        
+             a. ¬ food(x) V likes(John, x)
+             b. food(Apple)
+             c. food(vegetables)
+             d. ¬ eats(y, z) V killed(y) V food(z)
+             e. eats (Anil, Peanuts)
+             f. alive(Anil)
+             g. ¬ eats(Anil, w) V eats(Harry, w)
+             h. killed(g) V alive(g)
+             i. ¬ alive(k) V ¬ killed(k)
+             j. likes(John, Peanuts).
+        
+        Note: Statements "food(Apple) Λ food(vegetables)" and "eats (Anil, Peanuts) Λ alive(Anil)" can be written in two separate statements.
+        
+          vi) Distribute conjunction ∧ over disjunction ¬.
+                 This step will not make any change in this problem.
+        
+        Step-3: Negate the statement to be proved
+        
+        In this statement, we will apply negation to the conclusion statements, which will be written as ¬likes(John, Peanuts)
+        
+        Step-4: Draw Resolution graph:
+        
+        Now in this step, we will solve the problem by resolution tree using substitution. For the above problem, it will be given as follows:
+        
+         <img src="{% static 'images/resolution_graph.png' %}" alt="Resolution Graph"> 
+        <img src="images/resolution_graph.png" alt="">
+        Hence the negation of the conclusion has been proved as a complete contradiction with the given set of statements.
+      </pre> 
+        
+        <a href="https://www.google.com">Home</a>  -->
+
+        </div>
+
+        <center>
+            <button style="text-align: center; background-color: silver; border-radius: 15px; margin: auto;"><a id="homebutton"
+                href="{% url 'index' %}"><strong>Home</strong></a></button>
+        </center>
+
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A* Search Implementation</title>
+</head>
+<style>
+    body
+    {
+        background-color: lightseagreen;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        color: white;
+    }
+    img
+    {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+<body>
+    
+    
+    <center>
+        <img src="{% static 'images/A_Search.png'%}" alt="a star search"> <br>
+        Optimal Path : {{optimal_path}} <br> <br> 
+    Total Cost : {{total_cost}} <br> <br>
+        <button style="text-align: center; background-color: silver; border-radius: 15px; margin: auto;"><a id="homebutton"
+            href="{% url 'index' %}"><strong>Home</strong></a></button>
+    </center>
+</body>
+</html>

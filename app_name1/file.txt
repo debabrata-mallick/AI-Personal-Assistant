@@ -1,0 +1,107 @@
+Resolution :- Resolution is a theorem proving technique that proceeds by building refutation proofs, i.e., proofs by 
+              contradictions. It was invented by a Mathematician John Alan Robinson in the year 1965.
+
+Resolution is used, if there are various statements are given, and we need to prove a conclusion of those statements. 
+Unification is a key concept in proofs by resolutions. Resolution is a single inference rule which can efficiently 
+operate on the conjunctive normal form or clausal form.
+
+Clause: Disjunction of literals (an atomic sentence) is called a clause. It is also known as a unit clause.
+
+Conjunctive Normal Form: A sentence represented as a conjunction of clauses is said to be conjunctive normal form or CNF.
+
+Steps for Resolution:
+
+  1. Conversion of facts into first-order logic.
+  2. Convert FOL statements into CNF
+  3. Negate the statement which needs to prove (proof by contradiction)
+  4. Draw resolution graph (unification).
+
+To better understand all the above steps, we will take an example in which we will apply resolution.
+
+Example:
+
+  a. John likes all kind of food.
+  b. Apple and vegetable are food
+  c. Anything anyone eats and not killed is food.
+  d. Anil eats peanuts and still alive
+  e. Harry eats everything that Anil eats.
+
+Prove by resolution that:
+
+  John likes peanuts.
+
+Step-1: Conversion of Facts into FOL
+
+In the first step we will convert all the given statements into its first order logic.
+
+
+Step-2: Conversion of FOL into CNF
+
+In First order logic resolution, it is required to convert the FOL into CNF as CNF form makes easier for resolution proofs.
+
+  i) Eliminate all implication (→) and rewrite
+
+     a. ∀x ¬ food(x) V likes(John, x)
+     b. food(Apple) Λ food(vegetables)
+     c. ∀x ∀y ¬ [eats(x, y) Λ ¬ killed(x)] V food(y)
+     d. eats (Anil, Peanuts) Λ alive(Anil)
+     e. ∀x ¬ eats(Anil, x) V eats(Harry, x)
+     f. ∀x¬ [¬ killed(x) ] V alive(x)
+     g. ∀x ¬ alive(x) V ¬ killed(x)
+     h. likes(John, Peanuts).
+
+  ii) Move negation (¬)inwards and rewrite
+
+     a. ∀x ¬ food(x) V likes(John, x)
+     b. food(Apple) Λ food(vegetables)
+     c. ∀x ∀y ¬ eats(x, y) V killed(x) V food(y)
+     d. eats (Anil, Peanuts) Λ alive(Anil)
+     e. ∀x ¬ eats(Anil, x) V eats(Harry, x)
+     f. ∀x ¬killed(x) ] V alive(x)
+     g. ∀x ¬ alive(x) V ¬ killed(x)
+     h. likes(John, Peanuts).
+
+  iii) Rename variables or standardize variables
+
+     a. ∀x ¬ food(x) V likes(John, x)
+     b. food(Apple) Λ food(vegetables)
+     c. ∀y ∀z ¬ eats(y, z) V killed(y) V food(z)
+     d. eats (Anil, Peanuts) Λ alive(Anil)
+     e. ∀w¬ eats(Anil, w) V eats(Harry, w)
+     f. ∀g ¬killed(g) ] V alive(g)
+     g. ∀k ¬ alive(k) V ¬ killed(k)
+     h. likes(John, Peanuts).
+
+  iv) Eliminate existential instantiation quantifier by elimination.
+
+In this step, we will eliminate existential quantifier ∃, and this process is known as Skolemization. But in this example problem since there is no existential quantifier so all the statements will remain same in this step.
+Drop Universal quantifiers.
+
+  v) In this step we will drop all universal quantifier since all the statements are not implicitly quantified so we don't need it.
+
+     a. ¬ food(x) V likes(John, x)
+     b. food(Apple)
+     c. food(vegetables)
+     d. ¬ eats(y, z) V killed(y) V food(z)
+     e. eats (Anil, Peanuts)
+     f. alive(Anil)
+     g. ¬ eats(Anil, w) V eats(Harry, w)
+     h. killed(g) V alive(g)
+     i. ¬ alive(k) V ¬ killed(k)
+     j. likes(John, Peanuts).
+
+Note: Statements "food(Apple) Λ food(vegetables)" and "eats (Anil, Peanuts) Λ alive(Anil)" can be written in two separate statements.
+
+  vi) Distribute conjunction ∧ over disjunction ¬.
+         This step will not make any change in this problem.
+
+Step-3: Negate the statement to be proved
+
+In this statement, we will apply negation to the conclusion statements, which will be written as ¬likes(John, Peanuts)
+
+Step-4: Draw Resolution graph:
+
+Now in this step, we will solve the problem by resolution tree using substitution. For the above problem, it will be given as follows:
+
+
+Hence the negation of the conclusion has been proved as a complete contradiction with the given set of statements.

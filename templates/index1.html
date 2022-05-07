@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+
+<body onload="myFunction()">
+  <form method="post"> {% csrf_token %}
+    
+    <p id="p1" name='webpage_text' style="display: none;">{{variable_name1}}</p>
+  
+    Enter your command:
+    <input type="text" id="i1" name="webpage_text" value={{variable_name1.x}}>
+    <button type="submit" name="output">Output</button>
+    Output:
+    <br>
+
+    Input Button
+    <button type="submit" name='input'>Input</button>
+    
+    <script>
+      function myFunction() {
+        document.getElementById("i1").value = document.getElementById("p1").innerHTML;
+      }
+    </script>
+  
+  </form>
+      {{variable_name}}
+</body>
+
+</html>
