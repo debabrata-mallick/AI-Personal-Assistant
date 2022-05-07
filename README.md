@@ -1,14 +1,24 @@
 # AI-Personal-Assistant
 **Libraries required to be installed using Pip Command**: 
+
 1)Pyttsx3   
+
 2)speech_recognition as sr  # pip install speechRecognition 
+
 3)Wikipedia  
+
 4)Django  
+
 **In-Built libraries required to be imported:**
+
 1)import datetime 
+
 2)Web browser  
+
 3)os  
+
 4)smtplib  
+
 Command required to start the server: Type 'python manage.py runserver' on cmd  
 
 **The implemented voice assistant can perform following tasks**: 
